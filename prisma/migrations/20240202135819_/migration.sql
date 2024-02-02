@@ -1,0 +1,42 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[User] (
+    [id] NVARCHAR(1000) NOT NULL,
+    [name] NVARCHAR(1000) NOT NULL,
+    [email] NVARCHAR(1000) NOT NULL,
+    [password] NVARCHAR(1000) NOT NULL,
+    [birthdate] DATETIME2 NOT NULL,
+    [gender] NVARCHAR(1000) NOT NULL,
+    [cpf] NVARCHAR(1000) NOT NULL,
+    [locationIdentification] NVARCHAR(1000) NOT NULL,
+    [cep] NVARCHAR(1000) NOT NULL,
+    [logradouro] NVARCHAR(1000) NOT NULL,
+    [numero] NVARCHAR(1000) NOT NULL,
+    [bairro] NVARCHAR(1000) NOT NULL,
+    [complemento] NVARCHAR(1000) NOT NULL,
+    [localidade] NVARCHAR(1000) NOT NULL,
+    [uf] NVARCHAR(1000) NOT NULL,
+    [cellphone] NVARCHAR(1000) NOT NULL,
+    [landline] NVARCHAR(1000),
+    [createdAt] DATETIMEOFFSET NOT NULL CONSTRAINT [User_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
+    [updatedAt] DATETIMEOFFSET,
+    CONSTRAINT [User_pkey] PRIMARY KEY CLUSTERED ([id]),
+    CONSTRAINT [User_id_key] UNIQUE NONCLUSTERED ([id]),
+    CONSTRAINT [User_cpf_key] UNIQUE NONCLUSTERED ([cpf])
+);
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH

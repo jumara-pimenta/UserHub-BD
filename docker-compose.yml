@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  app:
+    image: managementusers-backend:latest
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    container_name: managementusers-backend
+    # Roda o container na rede padrão do Docker, em vez de criar uma nova
+    network_mode: bridge
+    ports:
+      - ${PORT_BACKEND}:${PORT_BACKEND}
+    restart: always
+    env_file: .env
