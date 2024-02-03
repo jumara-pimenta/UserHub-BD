@@ -22,6 +22,6 @@ down:
 .PHONY: down
 
 logs:
-	docker logs termometro-backend -f
+	docker logs userhub-bd-backend -f
 
 .PHONY: logs

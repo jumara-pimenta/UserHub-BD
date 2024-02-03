@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
   app:
-    image: managementusers-backend:latest
+    image: userhub-bd-backend:latest
     build: 
       dockerfile: Dockerfile
       context: .
-    container_name: managementusers-backend
+    container_name: userhub-bd-backend
     # Roda o container na rede padrão do Docker, em vez de criar uma nova
     network_mode: bridge
     ports:
